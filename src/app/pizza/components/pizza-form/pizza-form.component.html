@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">Cadastro de Pizzas</mat-toolbar>
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Sabor</mat-label>
+        <input matInput type="text" formControlName="sabor"/>
+        <mat-error *ngIf="formGroup.get('sabor') &&
+                formGroup.get('sabor')?.invalid &&
+                formGroup.get('sabor')?.touched">
+            Sabor é obrigatório.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Ingredientes</mat-label>
+        <input matInput type="text" formControlName="ingredientes"/>
+        <mat-error *ngIf="formGroup.get('ingredientes') &&
+                formGroup.get('ingredientes')?.invalid &&
+                formGroup.get('ingredientes')?.touched">
+            Ingrediente é obrigatória.
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"
+        type="submit"[disabled]="formGroup.invalid">
+        Salvar
+    </button>
+
+</form>
